@@ -1,0 +1,28 @@
+name: Validate Godot Project
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:4.4.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate project
+        run: godot --headless --editor --path . --quit
+
+      - name: Check files
+        run: |
+          test -f project.godot
+          test -f scenes/main.tscn
+          test -f scripts/main.gd
+          test -f scripts/mobile_controls.gd
+          test -f scripts/joystick.gd
+          echo "Project files verified!"
