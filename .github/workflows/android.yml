@@ -64,7 +64,7 @@ jobs:
       - name: Export APK
         run: |
           mkdir -p build
-          /tmp/godot/Godot_v4.4.1-stable_linux.x86_64 --headless --path . --export-debug "Android" build/RecRoomClassics-debug.apk
+          /tmp/godot/Godot_v4.4.1-stable_linux.x86_64 --headless --path . --verbose --export-debug "Android" build/RecRoomClassics-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
