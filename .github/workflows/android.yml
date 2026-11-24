@@ -43,7 +43,7 @@ jobs:
       - name: Configure Godot
         run: |
           mkdir -p ~/.config/godot
-          cat > ~/.config/godot/editor_settings-4.tres <<SETTINGS
+          cat > ~/.config/godot/editor_settings-4.4.tres <<SETTINGS
           [gd_resource type="EditorSettings" format=3]
           [resource]
           export/android/android_sdk_path = "$ANDROID_HOME"
@@ -64,7 +64,7 @@ jobs:
       - name: Export APK
         run: |
           mkdir -p build
-          /tmp/godot/Godot_v4.4.1-stable_linux.x86_64 --headless --path . --verbose --verbose --export-debug "Android" build/RecRoomClassics-debug.apk
+          /tmp/godot/Godot_v4.4.1-stable_linux.x86_64 --headless --path . --verbose --export-debug "Android" build/RecRoomClassics-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
